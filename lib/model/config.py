@@ -284,6 +284,8 @@ __C.ANCHOR_RATIOS = [0.5,1,2]
 # Number of filters for the RPN layer
 __C.RPN_CHANNELS = 512
 
+# Which type of preprocessing to be used for the network
+__C.PREPROCESSING = 'VGG' # Inception / VGG
 
 def get_output_dir(imdb, weights_filename):
   """Return the directory where experimental artifacts are placed.

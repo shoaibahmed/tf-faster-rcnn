@@ -32,8 +32,15 @@ def im_list_to_blob(ims):
 
 def prep_im_for_blob(im, pixel_means, target_size, max_size):
   """Mean subtract and scale an image for use in a blob."""
-  im = im.astype(np.float32, copy=False)
-  im -= pixel_means
+  if preprocessing == "Inception":
+    # im = tf.image.convert_image_dtype(im, dtype=tf.float32)
+    im = im.astype(np.float32, copy=False) / 255.0
+    im = im - 0.5
+    im = im * 2.0
+  else:
+    im = im.astype(np.float32, copy=False)
+    im -= pixel_means
+  
   im_shape = im.shape
   im_size_min = np.min(im_shape[0:2])
   im_size_max = np.max(im_shape[0:2])
