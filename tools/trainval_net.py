@@ -20,6 +20,7 @@ import sys
 import tensorflow as tf
 from nets.vgg16 import vgg16
 from nets.resnet_v1 import resnetv1
+from nets.resnet_v1_dense import resnetv1_dense
 from nets.inc_res_v2 import inc_res_v2
 from nets.resnet_v2 import resnetv2
 from nets.mobilenet_v1 import mobilenetv1
@@ -141,6 +142,8 @@ if __name__ == '__main__':
     net = mobilenetv1(batch_size=cfg.TRAIN.IMS_PER_BATCH)
   elif args.net == 'inc_res_v2':
     net = inc_res_v2(batch_size=cfg.TRAIN.IMS_PER_BATCH)
+  elif args.net == 'res152_dense':
+    net = resnetv1_dense(batch_size=cfg.TRAIN.IMS_PER_BATCH, num_layers=152)
   else:
     raise NotImplementedError
     
